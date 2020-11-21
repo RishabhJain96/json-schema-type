@@ -1,4 +1,4 @@
-# jsonschema-ts
+# json-schema-type
 
 Generate typescript model definitions with **just** the JSON schema.
 
@@ -12,10 +12,12 @@ Following the formal specification found here: https://cswr.github.io/JsonSchema
 
 ## Usage
 
+**Requires typescript 4.1+**
+
 In order to use this library, your JSON schema must be declared as a type literal in Typescript. This prevents type widening. You can do this with either the `<const>` operator or using `as const` (`{} as const`). Then, you can use the `ResolvedJsonSchema` type along with the `typeof` typescript operator to create a type for your model.
 
 ```ts
-import {ResolvedJsonSchema} from "jsonschema-ts";
+import {ResolvedJsonSchema} from "json-schema-type";
 
 const UserSchema = <const>{
   type: "object",
@@ -27,9 +29,9 @@ const UserSchema = <const>{
     tags: {
       type: "array",
       items: {
-        type: "string"
-      }
-    }
+        type: "string",
+      },
+    },
     profile: {
       type: "object",
       properties: {
@@ -46,8 +48,8 @@ type User = ResolvedJsonSchema<typeof UserSchema>;
 // User is typed according to the schema above
 const SampleUser: User = {
   email: "test@test.com",
-  password: "very_secure_password"
-}
+  password: "very_secure_password",
+};
 ```
 
 ## Supported Operations
@@ -55,25 +57,25 @@ const SampleUser: User = {
 Crossed out items are typed at the schema level but not enforced at the type level.
 
 - [x] String, Integer, Number, Boolean, Null types
-- [ ] ~~String restrictions~~
+- [x] ~~String restrictions~~
 - [x] Basic array type
 - [x] Array items
 - [x] Array additional items
-- [ ] ~~Array min items~~
-- [ ] ~~Array max items~~
+- [x] ~~Array min items~~
+- [x] ~~Array max items~~
 - [x] Basic object type
 - [x] Object properties
 - [x] Object required
 - [x] Object additional properties
-- [ ] ~~Object min/max properties~~
-- [ ] Object dependencies
-- [ ] ~~Object patternProperties~~
+- [x] ~~Object min/max properties~~
+- [x] Object dependencies
+- [x] ~~Object patternProperties~~
 - [ ] anyOf
 - [ ] allOf
 - [ ] oneOf
 - [ ] not
-- [ ] Enum
-- [ ] Metadata
+- [x] Enum
+- [x] Metadata
 - [x] Multiple types
 - [ ] ~~Definitions~~
 - [ ] ~~References~~

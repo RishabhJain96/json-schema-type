@@ -1,4 +1,5 @@
 import {Boolean} from "ts-toolbelt";
+import {BaseType} from "../basics/base";
 import {JsonSchema, ResolvedJsonSchema} from "../json_schema/json_schema";
 
 type BasicObjectType = {
@@ -21,7 +22,7 @@ type SchemaDependency = Record<string, JsonSchema>;
 
 type ObjectDependency = ArrDependency | SchemaDependency;
 
-export type ObjectType = {
+export type ObjectType = BaseType & {
   type: "object";
   properties?: Record<string, JsonSchema>;
   required?: readonly string[];

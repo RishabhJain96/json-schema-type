@@ -1,4 +1,6 @@
-export type StringType = {
+import {BaseType} from "./base";
+
+export type StringType = BaseType & {
   type: "string";
   minLen?: number;
   maxLen?: number;

@@ -1,10 +1,13 @@
 {
-  "name": "jsonschema-ts",
+  "name": "json-schema-type",
   "author": "Rishabh Jain <rj254@cornell.edu>",
-  "version": "0.0.8",
+  "version": "0.0.11",
   "license": "MIT",
-  "main": "dist/index.js",
+  "main": "src/index.js",
   "typings": "dist/index.d.ts",
+  "typesVersions": {
+    ">=4.1": { "*": ["ts4.1/*"] }
+  },
   "scripts": {
     "dev": "ts-node src/index.ts",
     "build": "tsc"

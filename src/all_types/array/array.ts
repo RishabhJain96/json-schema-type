@@ -1,3 +1,4 @@
+import {BaseType} from "../basics/base";
 import {JsonSchema, ResolvedJsonSchema} from "../json_schema/json_schema";
 
 type ArrayRestrictions = {
@@ -16,7 +17,9 @@ type BasicArrayType = {
   type: "array";
 };
 
-export type ArrayType = (ArrayWithItem | BasicArrayType) & ArrayRestrictions;
+export type ArrayType = (ArrayWithItem | BasicArrayType) &
+  ArrayRestrictions &
+  BaseType;
 
 export type ResolvedArrayType<T extends ArrayType> = T extends ArrayWithItem
   ? ResolvedJsonSchema<T["items"]>[]

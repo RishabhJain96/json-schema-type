@@ -1,4 +1,6 @@
-export type BooleanType = {
+import {BaseType} from "./base";
+
+export type BooleanType = BaseType & {
   type: "boolean";
 };
 

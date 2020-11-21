@@ -1,4 +1,6 @@
-export type NullType = {
+import {BaseType} from "./base";
+
+export type NullType = BaseType & {
   type: "null";
 };
 

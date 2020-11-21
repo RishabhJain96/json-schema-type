@@ -1,3 +1,5 @@
+import {BaseType} from "./base";
+
 type BaseNumber = {
   minimum?: number;
   exclusiveMinimum?: number;
@@ -6,13 +8,15 @@ type BaseNumber = {
   multipleOf?: number;
 };
 
-export type NumberType = BaseNumber & {
-  type: "number";
-};
+export type NumberType = BaseType &
+  BaseNumber & {
+    type: "number";
+  };
 
-export type IntegerType = BaseNumber & {
-  type: "integer";
-};
+export type IntegerType = BaseType &
+  BaseNumber & {
+    type: "integer";
+  };
 
 export type ResolvedNumberType<T> = T extends NumberType | IntegerType
   ? number
