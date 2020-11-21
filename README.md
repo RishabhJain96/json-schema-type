@@ -1,6 +1,6 @@
 # json-schema-type
 
-Generate typescript model definitions with **just** the JSON schema.
+Generate typescript model definitions with **just** the JSON schema (including reference resolution).
 
 ## Motivation
 
@@ -71,8 +71,8 @@ Crossed out items are typed at the schema level but not enforced at the type lev
 - [x] Object dependencies
 - [x] ~~Object patternProperties~~
 - [x] anyOf
-- [ ] allOf
-- [ ] oneOf
+- [x] allOf
+- [x] oneOf
 - [ ] not
 - [x] Enum
 - [x] Metadata

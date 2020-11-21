@@ -10,12 +10,12 @@ type BaseNumber = {
 
 export type NumberType = BaseType &
   BaseNumber & {
-    type: "number";
+    readonly type: "number";
   };
 
 export type IntegerType = BaseType &
   BaseNumber & {
-    type: "integer";
+    readonly type: "integer";
   };
 
 export type ResolvedNumberType<T> = T extends NumberType | IntegerType
