@@ -1,0 +1,19 @@
+{
+  "name": "typed-json-schema",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "dev": "ts-node src/index.ts",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "ts-node": "^9.0.0",
+    "ts-node-dev": "^1.0.0",
+    "typescript": "^4.1.2"
+  },
+  "dependencies": {
+    "ts-toolbelt": "^8.0.7"
+  }
+}
