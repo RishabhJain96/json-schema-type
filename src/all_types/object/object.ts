@@ -44,18 +44,19 @@ export type OptionalPropertyKeys<Props, Req> = Req extends readonly string[]
 
 export type ResolvedObjectType<
   T extends ObjectType,
+  Base extends object = {},
   Props = T["properties"],
   Req = T["required"],
   AdditionalProps = T["additionalProperties"]
 > = T extends PropertiesObjectType
   ? {
       [K in RequiredPropertyKeys<Props, Req>]: Props[K] extends JsonSchema
-        ? ResolvedJsonSchema<Props[K]>
+        ? ResolvedJsonSchema<Props[K], Base>
         : never;
     } &
       {
         [K in OptionalPropertyKeys<Props, Req>]?: Props[K] extends JsonSchema
-          ? ResolvedJsonSchema<Props[K]>
+          ? ResolvedJsonSchema<Props[K], Base>
           : never;
       } &
       (T extends AdditionalPropertiesObjectType
@@ -64,7 +65,7 @@ export type ResolvedObjectType<
             ? {[key: string]: any}
             : {}
           : AdditionalProps extends JsonSchema
-          ? {[key: string]: ResolvedJsonSchema<AdditionalProps>}
+          ? {[key: string]: ResolvedJsonSchema<AdditionalProps, Base>}
           : {}
         : {})
   : T extends BasicObjectType

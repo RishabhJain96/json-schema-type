@@ -77,8 +77,8 @@ Crossed out items are typed at the schema level but not enforced at the type lev
 - [x] Enum
 - [x] Metadata
 - [x] Multiple types
-- [ ] ~~Definitions~~
-- [ ] ~~References~~
+- [x] Definitions
+- [x] References
 
 ## Alternatives:
 

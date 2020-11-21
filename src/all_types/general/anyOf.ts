@@ -7,6 +7,6 @@ export type AnyOf = BaseType & {
   anyOf: readonly JsonSchema[];
 };
 
-export type ResolvedAnyOf<T> = T extends AnyOf
-  ? ResolvedJsonSchema<List.UnionOf<T["anyOf"]>>
+export type ResolvedAnyOf<T, Base extends object = {}> = T extends AnyOf
+  ? ResolvedJsonSchema<List.UnionOf<T["anyOf"]>, Base>
   : never;

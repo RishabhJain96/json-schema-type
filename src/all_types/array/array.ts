@@ -21,8 +21,11 @@ export type ArrayType = (ArrayWithItem | BasicArrayType) &
   ArrayRestrictions &
   BaseType;
 
-export type ResolvedArrayType<T extends ArrayType> = T extends ArrayWithItem
-  ? ResolvedJsonSchema<T["items"]>[]
+export type ResolvedArrayType<
+  T extends ArrayType,
+  Base extends object = {}
+> = T extends ArrayWithItem
+  ? ResolvedJsonSchema<T["items"], Base>[]
   : T extends BasicArrayType
   ? any[]
   : never;

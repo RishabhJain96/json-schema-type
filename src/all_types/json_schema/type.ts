@@ -25,12 +25,13 @@ export type MultiType = {
   type: readonly TypeName[];
 };
 
-type TypeResolution<T> = T extends TypeName
+type TypeResolution<T, Base extends object = {}> = T extends TypeName
   ? {type: T} extends JsonSchema
-    ? ResolvedJsonSchema<Any.Cast<{type: T}, JsonSchema>>
+    ? ResolvedJsonSchema<Any.Cast<{type: T}, JsonSchema>, Base>
     : never
   : never;
 
-export type ResolvedMultiType<T extends MultiType> = TypeResolution<
-  T["type"][number]
->;
+export type ResolvedMultiType<
+  T extends MultiType,
+  Base extends object = {}
+> = TypeResolution<T["type"][number], Base>;

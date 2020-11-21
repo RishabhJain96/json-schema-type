@@ -12,10 +12,13 @@ import {
 } from "../basics";
 import {EnumType, ResolvedEnumType} from "../basics/enum";
 import {AnyOf, ResolvedAnyOf} from "../general";
+import {Ref, ResolvedRef} from "../general/ref";
 import {ObjectType, ResolvedObjectType} from "../object/object";
 import {MultiType, ResolvedMultiType} from "./type";
 
-export type JsonSchema =
+type DefinitionRecord = {[key: string]: JsonSchema | DefinitionRecord};
+
+export type JsonSchema = {id?: string; definitions?: DefinitionRecord} & (
   | StringType
   | NumberType
   | IntegerType
@@ -25,10 +28,17 @@ export type JsonSchema =
   | ObjectType
   | MultiType
   | EnumType
-  | AnyOf;
+  | AnyOf
+  | Ref
+);
 
-export type ResolvedJsonSchema<T extends JsonSchema> = T extends AnyOf
-  ? ResolvedAnyOf<T>
+export type ResolvedJsonSchema<
+  T extends JsonSchema,
+  Root extends object = T
+> = T extends Ref
+  ? ResolvedRef<T, Root>
+  : T extends AnyOf
+  ? ResolvedAnyOf<T, Root>
   : T extends EnumType
   ? ResolvedEnumType<T>
   : T extends StringType
@@ -40,9 +50,9 @@ export type ResolvedJsonSchema<T extends JsonSchema> = T extends AnyOf
   : T extends NullType
   ? ResolvedNullType<T>
   : T extends ArrayType
-  ? ResolvedArrayType<T>
+  ? ResolvedArrayType<T, Root>
   : T extends MultiType
-  ? ResolvedMultiType<T>
+  ? ResolvedMultiType<T, Root>
   : T extends ObjectType
-  ? ResolvedObjectType<T>
+  ? ResolvedObjectType<T, Root>
   : never;
