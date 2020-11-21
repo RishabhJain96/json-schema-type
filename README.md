@@ -70,7 +70,7 @@ Crossed out items are typed at the schema level but not enforced at the type lev
 - [x] ~~Object min/max properties~~
 - [x] Object dependencies
 - [x] ~~Object patternProperties~~
-- [ ] anyOf
+- [x] anyOf
 - [ ] allOf
 - [ ] oneOf
 - [ ] not
