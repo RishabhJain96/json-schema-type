@@ -6,7 +6,9 @@ Generate typescript model definitions with **just** the JSON schema.
 
 Avoid typing the JSON schema and then also managing typescript types. A large differentiating factor between this library and other libraries is that we use the JSON schema as a source of truth.
 
-If you already have JSON schemas, you can get typescript types with _little/no_ modifications. This can be particularly helpful in other libraries, especially those that are expecting JSON schemas (fastify, objection.js, etc).
+If you already have JSON schemas, you can get typescript types with _little/no_ modifications. This can be particularly helpful when you already have a schema to do validation. Especially consider servers that are expecting JSON schemas (fastify, objection.js, etc).
+
+Following the formal specification found here: https://cswr.github.io/JsonSchema/
 
 ## Usage
 
@@ -50,6 +52,8 @@ const SampleUser: User = {
 
 ## Supported Operations
 
+Crossed out items are typed at the schema level but not enforced at the type level.
+
 - [x] String, Integer, Number, Boolean, Null types
 - [ ] ~~String restrictions~~
 - [x] Basic array type
@@ -64,6 +68,15 @@ const SampleUser: User = {
 - [ ] ~~Object min/max properties~~
 - [ ] Object dependencies
 - [ ] ~~Object patternProperties~~
+- [ ] anyOf
+- [ ] allOf
+- [ ] oneOf
+- [ ] not
+- [ ] Enum
+- [ ] Metadata
+- [x] Multiple types
+- [ ] ~~Definitions~~
+- [ ] ~~References~~
 
 ## Alternatives:
 
