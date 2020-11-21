@@ -1,4 +1,4 @@
-# Typed Json Schema
+# jsonschema-ts
 
 Generate typescript model definitions with **just** the JSON schema.
 
@@ -15,7 +15,7 @@ Following the formal specification found here: https://cswr.github.io/JsonSchema
 In order to use this library, your JSON schema must be declared as a type literal in Typescript. This prevents type widening. You can do this with either the `<const>` operator or using `as const` (`{} as const`). Then, you can use the `ResolvedJsonSchema` type along with the `typeof` typescript operator to create a type for your model.
 
 ```ts
-import {ResolvedJsonSchema} from "typed-json-schema";
+import {ResolvedJsonSchema} from "jsonschema-ts";
 
 const UserSchema = <const>{
   type: "object",

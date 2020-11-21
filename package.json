@@ -1,5 +1,6 @@
 {
-  "name": "typed-json-schema",
+  "name": "jsonschema-ts",
+  "author": "Rishabh Jain <rj254@cornell.edu>",
   "version": "0.0.8",
   "license": "MIT",
   "main": "dist/index.js",
