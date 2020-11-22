@@ -13,3 +13,13 @@ const single = <const>{
 
 // should be string
 type SingleResolved = ResolvedMultiType<typeof single>;
+
+const multiArray = <const>{
+  type: ["string", "array"],
+  items: {
+    type: "string",
+  },
+};
+
+// should be string | string[]
+type MultiArrayResolved = ResolvedMultiType<typeof multiArray>;

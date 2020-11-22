@@ -1,4 +1,4 @@
-import {Any} from "ts-toolbelt";
+import {Any, List, Object} from "ts-toolbelt";
 import {ArrayType} from "../array/array";
 import {
   BooleanType,
@@ -25,13 +25,16 @@ export type MultiType = {
   type: readonly TypeName[];
 };
 
-type TypeResolution<T, Base extends object = {}> = T extends TypeName
-  ? {type: T} extends JsonSchema
-    ? ResolvedJsonSchema<Any.Cast<{type: T}, JsonSchema>, Base>
-    : never
-  : never;
-
 export type ResolvedMultiType<
-  T extends MultiType,
-  Base extends object = {}
-> = TypeResolution<T["type"][number], Base>;
+  T,
+  Base extends object = {},
+  Types extends List.List = T extends MultiType ? T["type"] : [],
+  WithoutType = T extends MultiType ? Object.Omit<T, "type"> : {}
+> = T extends MultiType
+  ? {
+      [k in keyof Types]: ResolvedJsonSchema<
+        Any.Cast<{type: Types[k]} & WithoutType, JsonSchema>,
+        Base
+      >;
+    }[number]
+  : never;

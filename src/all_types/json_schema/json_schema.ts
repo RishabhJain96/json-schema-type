@@ -36,6 +36,8 @@ export type JsonSchema = {id?: string; definitions?: DefinitionRecord} & (
   | MultiType
   | EnumType
   | AnyOf
+  | AllOf
+  | OneOf
   | Ref
 );
 
