@@ -14,9 +14,11 @@ import {EnumType, ResolvedEnumType} from "../basics/enum";
 import {
   AllOf,
   AnyOf,
+  ConstType,
   OneOf,
   ResolvedAllOf,
   ResolvedAnyOf,
+  ResolvedConstType,
   ResolvedOneOf,
 } from "../general";
 import {Ref, ResolvedRef} from "../general/ref";
@@ -35,6 +37,7 @@ export type JsonSchema = {id?: string; definitions?: DefinitionRecord} & (
   | ObjectType
   | MultiType
   | EnumType
+  | ConstType
   | AnyOf
   | AllOf
   | OneOf
@@ -54,6 +57,8 @@ export type ResolvedJsonSchema<
   ? ResolvedOneOf<T, Root>
   : T extends EnumType
   ? ResolvedEnumType<T>
+  : T extends ConstType
+  ? ResolvedConstType<T>
   : T extends StringType
   ? ResolvedStringType<T>
   : T extends NumberType | IntegerType

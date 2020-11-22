@@ -79,6 +79,7 @@ Crossed out items are typed at the schema level but not enforced at the type lev
 - [x] Multiple types
 - [x] Definitions
 - [x] References
+- [x] Const
 
 ## Alternatives:
 
