@@ -5,7 +5,6 @@ const basic = <const>{
     {type: "string"},
     {type: "integer"},
     {type: "object", properties: {name: {type: "string"}}},
-    {type: "wtawtwe"},
     {type: "object", properties: {user: {type: "string"}}},
   ],
 };
