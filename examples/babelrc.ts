@@ -158,4 +158,6 @@ const config: BabelConfig = {
   moduleIds: "test",
   ast: false,
   presets: ["test"],
+  sourceMaps: true,
+  only: ["true"],
 };

@@ -1,4 +1,4 @@
-import {Boolean} from "ts-toolbelt";
+import {Any, Boolean} from "ts-toolbelt";
 import {BaseType} from "../basics/base";
 import {JsonSchema, ResolvedJsonSchema} from "../json_schema/json_schema";
 
