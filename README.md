@@ -2,6 +2,8 @@
 
 Generate typescript model definitions with **just** the JSON schema (including reference resolution).
 
+:warning: Currently in **beta**
+
 ## Motivation
 
 Avoid typing the JSON schema and then also managing typescript types. A large differentiating factor between this library and other libraries is that we use the JSON schema as a source of truth.
