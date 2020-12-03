@@ -1,4 +1,7 @@
+!dist
 examples
 .vscode
 src
 tsconfig.json
+tsconfig.prod.json
+*.tgz
