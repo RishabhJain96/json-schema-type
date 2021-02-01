@@ -1,5 +1,5 @@
 {
-  "name": "json-schema-type",
+  "name": "@zbinlin/json-schema-type",
   "author": "Rishabh Jain <rj254@cornell.edu>",
   "version": "0.0.18",
   "license": "Apache-2.0",
@@ -19,7 +19,8 @@
   "scripts": {
     "dev": "ts-node src/index.ts",
     "build": "tsc -p tsconfig.prod.json",
-    "prepare": "npm run build"
+    "clean": "rm -r ./dist",
+    "prepublish": "npm run build"
   },
   "devDependencies": {
     "ts-node": "^9.1.1",
